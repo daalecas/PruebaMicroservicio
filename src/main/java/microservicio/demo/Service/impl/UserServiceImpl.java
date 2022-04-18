@@ -22,9 +22,6 @@ public class UserServiceImpl  implements UserService {
         this.validator = validator;
     }
 
-    /**
-    hola mundo
-           **/
     @Override
     public User create(User user) {
         this.userRepository.save(user);
