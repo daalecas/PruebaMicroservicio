@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import microservicio.demo.Models.Bill;
 import microservicio.demo.Repository.BillRepository;
 import microservicio.demo.Service.BillService;
+import microservicio.demo.exceptions.ObjetoNoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -39,11 +40,21 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public Bill update(Bill bill) {
-        return null;
+        this.search(bill.getId());
+        this.billRepository.save(bill);
+        return bill;
     }
 
     @Override
     public void delete(Long id) {
+        this.search(id);
+        this.billRepository.deleteById(id);
+    }
 
+    @Override
+    public Bill search(long id) {
+        return this.billRepository
+                .findById(id)
+                .orElseThrow(() -> new ObjetoNoExisteException("no existe la cuenta con id: " + id));
     }
 }

@@ -13,4 +13,6 @@ public interface BillService {
     Bill update(Bill bill);
 
     void delete(Long id);
+
+    Bill search(long id);
 }

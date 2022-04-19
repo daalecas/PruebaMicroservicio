@@ -15,11 +15,11 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Bill extends BaseEntities{
+public class Bill extends BaseEntities {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column (name = "billId")
+        @Column(name = "billId")
         private Long id;
 
 
@@ -33,4 +33,5 @@ public class Bill extends BaseEntities{
 
         @OneToMany(targetEntity = User.class)
         private List userId;
-    }
+
+}

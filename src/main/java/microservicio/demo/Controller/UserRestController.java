@@ -1,5 +1,6 @@
 package microservicio.demo.Controller;
 
+import microservicio.demo.Dto.BillDto;
 import microservicio.demo.Dto.UserDto;
 import microservicio.demo.Models.User;
 import microservicio.demo.Service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -33,4 +35,6 @@ public class UserRestController {
         user = this.userService.create(user);
         return new ResponseEntity<>(modelMapper.map(user, UserDto.class), HttpStatus.CREATED);
     }
+
+
 }
